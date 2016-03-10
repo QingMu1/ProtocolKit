@@ -26,6 +26,25 @@
 // For a magic reserved keyword color, use @defs(your_protocol_name)
 #define defs _pk_extension
 
+/*
+    @defs(Forkable)
+->  @_pk_extension(Forkable)
+->  @_pk_extension_imp(Forkable, _pk_get_container_class(Forkable))
+->  @_pk_extension_imp(Forkable, _pk_get_container_class_imp(Forkable, 0))
+->	@_pk_extension_imp(Forkable, _pk_get_container_class_imp_concat(__PKContainer_, Forkable, 0))
+->	@_pk_extension_imp(Forkable, __PKContainer_Forkable_0)
+->
+ @protocol Forkable;
+ @interface __PKContainer_Forkable_0 : NSObject <Forkable> @end
+ @implementation __PKContainer_Forkable_1
+ + (void)load {
+    _pk_extension_load(@protocol(Forkable), __PKContainer_Forkable_1.class);
+ }
+ 
+ 
+ 注：__COUNTER__ 是一个编译器扩展，将被替换为一个整型常量,初始值为0，编译单元内每出现一次出现该宏,便它的替换值将会加1。
+ */
+
 // Interface
 #define _pk_extension($protocol) _pk_extension_imp($protocol, _pk_get_container_class($protocol))
 
